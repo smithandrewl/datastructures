@@ -22,13 +22,12 @@ class DSLinkedList[T]:
       this.last().next = Node(data, null)
 
   override def toString: String =
-    var out: Seq[String] = Seq()
+    @tailrec
+    def inner(current: Node[T], acc: Seq[String]):Seq[String] =
+      if current == null then
+        acc
+      else
+        inner(current.next, acc :+ current.data.toString)
 
-    var current: Node[T] = head
-
-    while current != null do
-      out = out :+ current.data.toString
-      current = current.next
-
-    out.mkString(" ")
+    inner(head, Seq()).mkString(" ")
 
