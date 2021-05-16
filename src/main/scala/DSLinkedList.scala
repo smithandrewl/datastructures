@@ -3,16 +3,22 @@ class DSLinkedList[T]:
 
   var head: Node[T] = null
 
+
+  private def last(): Node[T] =
+    var current: Node[T] = head
+
+    while current.next != null do
+      current = current.next
+
+    current
+
   def insert(data: T) =
     if head == null then
       head = Node(data, null)
     else
-      var current: Node[T] = head
+      var last: Node[T] = this.last()
 
-      while current.next != null do
-        current = current.next
-
-      current.next = Node(data, null)
+      last.next = Node(data, null)
 
   override def toString: String =
     var out: Seq[String] = Seq()
