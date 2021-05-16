@@ -21,6 +21,21 @@ class DSLinkedList[T]:
     else
       this.last().next = Node(data, null)
 
+  def remove(data: T): Unit =
+    def inner(prev: Node[T], current: Node[T]): Unit =
+      if current == null then
+        return
+      else if prev == null && current.data == data then
+        head = current.next
+        inner(null, head)
+      else if current.data == data then
+        prev.next = current.next
+        inner(prev, prev.next)
+      else
+        inner(current, current.next)
+
+    inner(null, head)
+
   override def toString: String =
     @tailrec
     def inner(current: Node[T], acc: Seq[String]):Seq[String] =
