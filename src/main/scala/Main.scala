@@ -1,5 +1,9 @@
-@main def hello: Unit = 
-  println("Hello world!")
-  println(msg)
 
-def msg = "I was compiled by Scala 3. :)"
+@main def hello: Unit = {
+  val list: DSLinkedList[Int] = DSLinkedList[Int]()
+
+  list.insert(0)
+  list.insert(1)
+  list.insert(2)
+  println(list)
+}
