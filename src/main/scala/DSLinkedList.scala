@@ -15,14 +15,13 @@ class DSLinkedList[T]:
       current.next = Node(data, null)
 
   override def toString: String =
-    var out: String = ""
+    var out: Seq[String] = Seq()
 
     var current: Node[T] = head
 
-
     while current != null do
-      out = out + current.data + "\n"
+      out = out :+ current.data.toString
       current = current.next
 
-    out
+    out.mkString(" ")
 
